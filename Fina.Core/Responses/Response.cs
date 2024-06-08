@@ -15,11 +15,15 @@ public class Response<TData> where TData : class
     {
         _code = Configuration.DefaultStatusCode;
     }
-    public Response(TData? data, int code = Configuration.DefaultStatusCode, string? message = null)
+    public Response(TData? data, int code = Configuration.DefaultStatusCode, string? message = null, int countPageTotals = 0, int pageNumber = 0, int pageSize = 0)
     {
         Data = data;
         _code = code;
         Message = message;
+        CurrentPage = pageNumber;
+        PageSize = pageSize;
+        TotalCount = countPageTotals;
+
     }
     public int CurrentPage { get; set; }
     public int TotalPages => (int)Math.Ceiling(CurrentPage / (double)PageSize);
