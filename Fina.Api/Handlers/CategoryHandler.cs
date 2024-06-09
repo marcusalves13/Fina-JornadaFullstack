@@ -76,7 +76,7 @@ public class CategoryHandler : ICategoryHandler
         }
     }
 
-    public async Task<Response<Category>?> GetAsync(GetCategoryByIdRequest request)
+    public async Task<Response<Category>?> GetByIdAsync(GetCategoryByIdRequest request)
     {
         try 
         {
