@@ -39,7 +39,7 @@ public class CategoryHandler : ICategoryHandler
     {
         try 
         {
-            var category = _context.Categories.FirstOrDefault(x => x.Id == request.Id && x.UserId == request.UserId);
+            var category = await _context.Categories.FirstOrDefaultAsync(x => x.Id == request.Id && x.UserId == request.UserId);
             if (category != null)
                 return new Response<Category>(null, 204, "Categoria não encontrada.");
 
@@ -80,7 +80,7 @@ public class CategoryHandler : ICategoryHandler
     {
         try 
         {
-            var category = _context.Categories.AsNoTracking().FirstOrDefault(x => x.Id == request.Id && x.UserId == request.UserId);
+            var category = await _context.Categories.AsNoTracking().FirstOrDefaultAsync(x => x.Id == request.Id && x.UserId == request.UserId);
             if (category == null)
                 return new Response<Category>(null, 204, "Categoria não encontrada.");
             return new Response<Category>(category);
@@ -96,11 +96,11 @@ public class CategoryHandler : ICategoryHandler
     {
         try 
         {
-            var category = _context.Categories.FirstOrDefault(x => x.Id == request.Id && x.UserId == request.UserId);
+            var category = await _context.Categories.FirstOrDefaultAsync(x => x.Id == request.Id && x.UserId == request.UserId);
             if (category == null)
                 return new Response<Category>(null, 204, "Categoria não encontrada.");
             category.Description = request.Description;
-            category.Title = request.Description;
+            category.Title = request.Title;
             _context.Categories.Update(category);
             await _context.SaveChangesAsync();
             return new Response<Category>(category);

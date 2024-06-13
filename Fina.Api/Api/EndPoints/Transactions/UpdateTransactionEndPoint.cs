@@ -14,7 +14,7 @@ public class UpdateTransactionEndPoint : IEndPoint
             .WithName("Transactions:Update")
             .WithDescription("Atualiza transação")
             .WithOrder(2)
-            .Produces<Response<Transaction>?>();
+            .Produces<Response<Transaction?>>();
     }
     private static async Task<IResult> HandleAsync(ITransactionHandler handler, UpdateTransactionRequest request ,long id)
     {

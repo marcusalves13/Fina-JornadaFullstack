@@ -47,7 +47,7 @@ public class TransactionHandler : ITransactionHandler
     {
         try
         {
-            var transaction = _context.Transactions.FirstOrDefault(x => x.Id == request.Id && x.UserId == request.UserId);
+            var transaction = await _context.Transactions.FirstOrDefaultAsync(x => x.Id == request.Id && x.UserId == request.UserId);
             if (transaction != null)
                 return new Response<Transaction>(null, 204, "Transação não encontrada.");
 
@@ -65,7 +65,7 @@ public class TransactionHandler : ITransactionHandler
     {
         try
         {
-            var transaction = _context.Transactions.AsNoTracking().FirstOrDefault(x => x.Id == request.Id && x.UserId == request.UserId);
+            var transaction = await _context.Transactions.AsNoTracking().FirstOrDefaultAsync(x => x.Id == request.Id && x.UserId == request.UserId);
             if (transaction == null)
                 return new Response<Transaction>(null, 204, "Transação não encontrada.");
             return new Response<Transaction>(transaction);
@@ -108,7 +108,7 @@ public class TransactionHandler : ITransactionHandler
     {
         try
         {
-            var transaction = _context.Transactions.FirstOrDefault(x => x.Id == request.Id && x.UserId == request.UserId);
+            var transaction = await _context.Transactions.FirstOrDefaultAsync(x => x.Id == request.Id && x.UserId == request.UserId);
             if (transaction == null)
                 return new Response<Transaction>(null, 204, "Categoria não encontrada.");
 

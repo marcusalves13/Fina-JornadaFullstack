@@ -1,4 +1,5 @@
 ﻿using Fina.Api.Common.Api;
+using Fina.Core;
 using Fina.Core.Handler;
 using Fina.Core.Models;
 using Fina.Core.Requests.Categories;
@@ -18,12 +19,13 @@ public class GetAllCategoryEndPoint : IEndPoint
             .Produces<Response<List<Category?>>>();
     }
     private static async Task<IResult> HandleAsync
-        (ICategoryHandler handler, [FromQuery] int PageSize, [FromQuery] int PageNumber) 
+        (ICategoryHandler handler, [FromQuery] int PageSize = Configuration.DefaultPageSize, [FromQuery] int PageNumber = Configuration.DefaultPageNumber) 
     {
         var request = new GetAllCategoryRequest()
         {
             PageSize = PageSize,
-            PageNumber = PageNumber
+            PageNumber = PageNumber,
+            UserId = ApiConfiguration.UserId
         };
         var response = await handler.GetAllAsync(request);
         return response.IsSuccess ? TypedResults.Ok(response) : TypedResults.BadRequest(response);
