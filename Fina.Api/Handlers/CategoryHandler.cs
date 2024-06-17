@@ -40,7 +40,7 @@ public class CategoryHandler : ICategoryHandler
         try 
         {
             var category = await _context.Categories.FirstOrDefaultAsync(x => x.Id == request.Id && x.UserId == request.UserId);
-            if (category != null)
+            if (category == null)
                 return new Response<Category>(null, 204, "Categoria não encontrada.");
 
             _context.Categories.Remove(category);

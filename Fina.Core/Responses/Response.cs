@@ -10,7 +10,7 @@ public class Response<TData> where TData : class
     [JsonIgnore]
     public bool IsSuccess => _code is >= 200 and <= 299;
 
-    //[JsonConstructor]
+    [JsonConstructor]
     public Response()
     {
         _code = Configuration.DefaultStatusCode;
@@ -26,7 +26,7 @@ public class Response<TData> where TData : class
 
     }
     public int CurrentPage { get; set; }
-    public int TotalPages => (int)Math.Ceiling(CurrentPage / (double)PageSize);
+    public int TotalPages => Math.Max(0,(int)Math.Ceiling(CurrentPage / (double)PageSize));
     public int PageSize { get; set; } = Configuration.DefaultPageSize;
     public int TotalCount { get; set; }
     public TData Data { get; set; }
