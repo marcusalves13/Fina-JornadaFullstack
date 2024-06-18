@@ -12,7 +12,7 @@ public class DeleteTransactionEndPoint : IEndPoint
     {
         app.MapDelete("/{id}", HandleAsync)
             .WithName("Transaction:Delete")
-            .WithDescription("Excluir transação")
+            .WithSummary("Excluir transação")
             .WithOrder(3)
             .Produces<Response<Transaction?>>();
     }

@@ -12,7 +12,7 @@ public class GetTransactionByIdEndPoint : IEndPoint
     {
         app.MapGet("/{id}", HandleAsync)
             .WithName("Transaction:GetById")
-            .WithDescription("Retorna uma transação por ID")
+            .WithSummary("Retorna uma transação por ID")
             .WithOrder(4)
             .Produces<Response<Transaction?>>();
     }

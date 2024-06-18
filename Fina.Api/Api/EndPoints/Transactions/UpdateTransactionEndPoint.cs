@@ -12,7 +12,7 @@ public class UpdateTransactionEndPoint : IEndPoint
     {
         app.MapPut("/{id}",HandleAsync)
             .WithName("Transactions:Update")
-            .WithDescription("Atualiza transação")
+            .WithSummary("Atualiza transação")
             .WithOrder(2)
             .Produces<Response<Transaction?>>();
     }

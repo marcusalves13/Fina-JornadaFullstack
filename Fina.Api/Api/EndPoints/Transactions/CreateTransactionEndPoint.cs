@@ -14,7 +14,7 @@ public class CreateTransactionEndPoint : IEndPoint
     {
         app.MapPost("/", HandleAsync)
             .WithName("Transactions:Create")
-            .WithDescription("Cria uma nova transação")
+            .WithSummary("Cria uma nova transação")
             .WithOrder(1)
             .Produces<Response<Transaction?>>();
     }

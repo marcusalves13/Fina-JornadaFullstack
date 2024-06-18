@@ -14,7 +14,7 @@ public class GetTransactionByPeriodEndPoint : IEndPoint
     {
         app.MapGet("/", HandleAsync)
             .WithName("Transaction:GetByPeriod")
-            .WithDescription("Retorna transações por periodo")
+            .WithSummary("Retorna transações por periodo")
             .WithOrder(5)
             .Produces<List<Response<Transaction?>>>();
     }
