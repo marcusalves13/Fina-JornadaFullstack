@@ -35,7 +35,7 @@ public class TransactionHandler : ITransactionHandler
 
             await _context.Transactions.AddAsync(transaction);
             await _context.SaveChangesAsync();
-            return new Response<Transaction>(null, message: "Transação criada com sucesso.");
+            return new Response<Transaction>(transaction, message: "Transação criada com sucesso.");
         }
         catch (Exception ex)
         {

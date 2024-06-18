@@ -20,6 +20,6 @@ public class CreateCategoryEndPoint : IEndPoint
     {
         request.UserId = ApiConfiguration.UserId;
         var response = await handler.CreateAsync(request);
-        return response.IsSuccess ? TypedResults.Created($"v1/categories/{response.Data?.Id}") : TypedResults.BadRequest(response);
+        return response.IsSuccess ? TypedResults.Created($"/v1/categories/{response.Data?.Id}",response) : TypedResults.BadRequest(response);
     }
 }

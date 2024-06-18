@@ -22,6 +22,6 @@ public class CreateTransactionEndPoint : IEndPoint
     {
         request.UserId = ApiConfiguration.UserId;
         var response = await handler.CreateAsync(request);
-        return response.IsSuccess ? TypedResults.Created($"v1/transactions/{response.Data?.Id}") : TypedResults.BadRequest(response);
+        return response.IsSuccess ? TypedResults.Created($"/v1/transactions/{response.Data?.Id}",response) : TypedResults.BadRequest(response);
     }
 }

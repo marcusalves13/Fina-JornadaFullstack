@@ -28,7 +28,7 @@ public class CategoryHandler : ICategoryHandler
 
             await _context.Categories.AddAsync(category);
             await _context.SaveChangesAsync();
-            return new Response<Category>(null,message:"Categoria criada com sucesso.");
+            return new Response<Category>(category,message:"Categoria criada com sucesso.");
         }catch (Exception ex)
         {
             return new Response<Category>(null, 500, "Erro ao criar categoria");
