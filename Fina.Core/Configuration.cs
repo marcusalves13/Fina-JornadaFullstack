@@ -8,5 +8,5 @@ public static class Configuration
     public const int DefaultPageNumber = 1;
     public const int DefaultStatusCode = 200;
     public static string BackEndUrl { get; set; } = "http://localhost:5126";
-    public static string FontEndUrl { get; set; } = "http://localhost:5188";
+    public static string FrontEndUrl { get; set; } = "http://localhost:5188";
 }

@@ -12,7 +12,7 @@ public static class BuildExtensions
     {
         ApiConfiguration.ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? string.Empty;
         Configuration.BackEndUrl = builder.Configuration.GetValue<string>("BackendUrl") ?? string.Empty;
-        Configuration.FontEndUrl = builder.Configuration.GetValue<string>("FrontendUrl") ?? string.Empty;
+        Configuration.FrontEndUrl = builder.Configuration.GetValue<string>("FrontendUrl") ?? string.Empty;
     }
     public static void AddDocumentation(this WebApplicationBuilder builder)
     {
@@ -31,13 +31,16 @@ public static class BuildExtensions
             options => options.AddPolicy(
                 ApiConfiguration.CorsPolicyName, policy => policy.WithOrigins([
                     Configuration.BackEndUrl,
-                    Configuration.FontEndUrl
+                    Configuration.FrontEndUrl
                 ])
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials()
                 )
             );
+        Console.Clear();
+        Console.WriteLine($"Api iniciada com sucesso em: {Configuration.BackEndUrl}");
+        Console.WriteLine($"Web iniciada com sucesso em: {Configuration.FrontEndUrl}");
     }
 
     public static void AddServices(this WebApplicationBuilder builder) 
